@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS desenvolvedor (
+  id BIGINT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  dataFundacao VARCHAR(10) NOT NULL,
+  website VARCHAR(100) NOT NULL,
+  sede VARCHAR(20) NOT NULL
+);
