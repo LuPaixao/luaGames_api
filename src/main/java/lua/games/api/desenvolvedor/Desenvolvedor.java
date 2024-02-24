@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lua.games.api.jogo.Jogo;
 
 @Table(name = "desenvolvedor")
 @Entity(name = "Desenvolvedor")
@@ -17,11 +18,12 @@ public class Desenvolvedor {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-
-    @Column(name = "data_fundacao")
     private String dataFundacao;
     private String website;
     private String sede;
+
+    @OneToOne(mappedBy = "desenvolvedor")
+    private Jogo jogo;
 
     public Desenvolvedor(DadosCadastroDesenvolvedor dados) {
         this.nome = dados.nome();

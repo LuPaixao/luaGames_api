@@ -1,4 +1,12 @@
 package lua.games.api.console;
 
-public record DadosCadastroConsole(String id, String nome, String dataLancamento, String empresa) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DadosCadastroConsole(
+        @NotBlank
+        String nome,
+        @NotBlank
+        String dataLancamento,
+        @NotBlank
+        String empresa) {
 }

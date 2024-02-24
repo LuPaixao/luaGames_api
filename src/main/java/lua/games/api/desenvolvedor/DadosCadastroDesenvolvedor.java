@@ -1,4 +1,14 @@
 package lua.games.api.desenvolvedor;
 
-public record DadosCadastroDesenvolvedor(String id, String nome, String dataFundacao, String website, String sede) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DadosCadastroDesenvolvedor(
+        @NotBlank
+        String nome,
+        @NotBlank
+        String dataFundacao,
+        @NotBlank
+        String website,
+        @NotBlank
+        String sede) {
 }
