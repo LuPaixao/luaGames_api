@@ -1,8 +1,6 @@
 package lua.games.api.jogo;
 
 import jakarta.validation.constraints.NotBlank;
-import lua.games.api.console.DadosCadastroConsole;
-import lua.games.api.desenvolvedor.DadosCadastroDesenvolvedor;
 
 import java.util.List;
 
