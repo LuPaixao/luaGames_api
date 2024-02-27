@@ -22,13 +22,36 @@ public class Desenvolvedor {
     private String website;
     private String sede;
 
+    private boolean ativo;
+
     @OneToOne(mappedBy = "desenvolvedor")
     private Jogo jogo;
 
     public Desenvolvedor(DadosCadastroDesenvolvedor dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.dataFundacao = dados.dataFundacao();
         this.website = dados.website();
         this.sede = dados.sede();
+    }
+
+    public void atualizarInformacoes(DadosAtualizarDesenvolvedor dados) {
+        if (dados.nome() != null){
+            this.nome = nome;
+        }
+        if (dados.dataFundacao() != null){
+            this.dataFundacao = dataFundacao;
+        }
+        if (dados.website() != null){
+            this.website = website;
+        }
+        if (dados.sede() != null){
+            this.sede = sede;
+        }
+
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

@@ -21,13 +21,33 @@ public class Console {
     private String dataLancamento;
     private String empresa;
 
+    private boolean ativo;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_jogo")
     private Jogo jogo;
 
     public Console(DadosCadastroConsole dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.dataLancamento = dados.dataLancamento();
         this.empresa = dados.empresa();
+    }
+
+    public void atualizarInformacoes(DadosAtualizarConsole dados) {
+
+        if (dados.nome() != null){
+            this.nome = nome;
+        }
+        if (dados.dataLancamento() != null){
+            this.dataLancamento = dataLancamento;
+        }
+        if (dados.empresa() != null){
+            this.empresa = empresa;
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

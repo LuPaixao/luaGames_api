@@ -1,10 +1,12 @@
 package lua.games.api.controller;
 
-import lua.games.api.console.Console;
-import lua.games.api.console.ConsoleRepository;
-import lua.games.api.console.DadosCadastroConsole;
-import lua.games.api.console.DadosListagemConsole;
+import jakarta.validation.Valid;
+import lua.games.api.console.*;
+import lua.games.api.desenvolvedor.DadosAtualizarDesenvolvedor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +26,24 @@ public class ConsoleController {
     }
 
     @GetMapping
-    public List<DadosListagemConsole> listar(){
-        return repository.findAll().stream().map(DadosListagemConsole::new).toList();
+    public Page<DadosListagemConsole> listar(@PageableDefault(size = 10) Pageable paginacao){
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemConsole::new);
     }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizarConsole dados){
+        var console = repository.getReferenceById(dados.id());
+        console.atualizarInformacoes(dados);
+        repository.save(console);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        var console = repository.getReferenceById(id);
+        console.excluir();
+    }
+
 
 }

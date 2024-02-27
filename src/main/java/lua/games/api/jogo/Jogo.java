@@ -25,6 +25,8 @@ public class Jogo {
     private String genero;
     private String urlCapa;
 
+    private boolean ativo;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_desenvolvedor", referencedColumnName = "id")
     private Desenvolvedor desenvolvedor;
@@ -33,11 +35,37 @@ public class Jogo {
     private List<Console> console;
 
     public Jogo(DadosCadastroJogo dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.descricao = dados.descricao();
         this.dataLancamento = dados.dataLancamento();
         this.website = dados.website();
         this.genero = dados.genero();
         this.urlCapa = dados.urlCapa();
+    }
+
+    public void atualizarInformacoes(DadosAtualizarJogo dados) {
+        if (dados.nome() != null){
+            this.nome = nome;
+        }
+        if (dados.descricao() != null){
+            this.descricao = descricao;
+        }
+        if (dados.dataLancamento() != null){
+            this.dataLancamento = dataLancamento;
+        }
+        if (dados.website() != null){
+            this.website = website;
+        }
+        if (dados.genero() != null){
+            this.genero = genero;
+        }
+        if (dados.urlCapa() != null){
+            this.urlCapa = urlCapa;
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
