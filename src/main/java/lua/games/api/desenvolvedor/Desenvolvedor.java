@@ -37,16 +37,16 @@ public class Desenvolvedor {
 
     public void atualizarInformacoes(DadosAtualizarDesenvolvedor dados) {
         if (dados.nome() != null){
-            this.nome = nome;
+            this.nome = dados.nome();
         }
         if (dados.dataFundacao() != null){
-            this.dataFundacao = dataFundacao;
+            this.dataFundacao = dados.dataFundacao();
         }
         if (dados.website() != null){
-            this.website = website;
+            this.website = dados.website();
         }
         if (dados.sede() != null){
-            this.sede = sede;
+            this.sede = dados.sede();
         }
 
     }

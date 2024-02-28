@@ -37,13 +37,13 @@ public class Console {
     public void atualizarInformacoes(DadosAtualizarConsole dados) {
 
         if (dados.nome() != null){
-            this.nome = nome;
+            this.nome = dados.nome();
         }
         if (dados.dataLancamento() != null){
-            this.dataLancamento = dataLancamento;
+            this.dataLancamento = dados.dataLancamento();
         }
         if (dados.empresa() != null){
-            this.empresa = empresa;
+            this.empresa = dados.empresa();
         }
     }
 

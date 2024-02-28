@@ -46,22 +46,22 @@ public class Jogo {
 
     public void atualizarInformacoes(DadosAtualizarJogo dados) {
         if (dados.nome() != null){
-            this.nome = nome;
+            this.nome = dados.nome();
         }
         if (dados.descricao() != null){
-            this.descricao = descricao;
+            this.descricao = dados.descricao();
         }
         if (dados.dataLancamento() != null){
-            this.dataLancamento = dataLancamento;
+            this.dataLancamento = dados.dataLancamento();
         }
         if (dados.website() != null){
-            this.website = website;
+            this.website = dados.website();
         }
         if (dados.genero() != null){
-            this.genero = genero;
+            this.genero = dados.genero();
         }
         if (dados.urlCapa() != null){
-            this.urlCapa = urlCapa;
+            this.urlCapa = dados.urlCapa();
         }
     }
 
